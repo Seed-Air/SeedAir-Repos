@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
             validarCampo(this, [
                 { test: (v) => v !== '', mensaje: 'La contraseña es obligatoria' },
                 { test: (v) => v.length >= 8, mensaje: 'Mínimo 8 caracteres' },
-                { test: (v) => /(?=.[a-z])(?=.[A-Z])(?=.*\d)/.test(v), mensaje: 'Incluye mayúsculas, minúsculas y números' }
+                { test: (v) => /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/.test(v), mensaje: 'Incluye mayúsculas, minúsculas y números' }
             ]);
         });
     }
