@@ -12,15 +12,15 @@ SeedAir-Repos es una plataforma web desarrollada para facilitar la gestión y vi
 
 ---
 
-### Segmento Objetivo
-
-SeedAir-Repos está dirigido a desarrolladores, equipos técnicos y colaboradores que buscan una solución práctica para administrar, documentar y explorar repositorios vinculados a iniciativas SeedAir.
-
----
-
 ### Autores
 
 Greenallies
+
+---
+
+### Segmento Objetivo
+
+SeedAir-Repos está dirigido a desarrolladores, equipos técnicos y colaboradores que buscan una solución práctica para administrar, documentar y explorar repositorios vinculados a iniciativas SeedAir.
 
 ---
 
