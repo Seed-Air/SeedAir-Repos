@@ -18,6 +18,12 @@ SeedAir-Repos está dirigido a desarrolladores, equipos técnicos y colaboradore
 
 ---
 
+### Autores
+
+Greenallies
+
+---
+
 ### Características Principales
 
 - **Gestión centralizada de repositorios:** Acceso rápido y organizado a repositorios y recursos asociados.
