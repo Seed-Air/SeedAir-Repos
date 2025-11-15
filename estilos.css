@@ -1,4 +1,6 @@
-{
+/* Estilos completos (copia todo este archivo a estilos.css) */
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -1175,6 +1177,6 @@ textarea {
     }
 
     .impacto-mapa .mapa-card img {
-        aspect-ratio: 16/9;
-    }
+        aspect-ratio: 16/9;
+    }
 }
