@@ -448,4 +448,9 @@ document.addEventListener('keydown', function (e) {
 })();
 
 /* Función para unirse a campaña */
-
+function unirseACampania(nombreCampania) {
+    const confirmacion = confirm('¿Deseas unirte a la campaña "' + nombreCampania + '"?\n\nRecibirás más información por correo.');
+    if (confirmacion) {
+        alert('¡Excelente! Te has unido a "' + nombreCampania + '". Recibirás los detalles pronto.');
+    }
+}
