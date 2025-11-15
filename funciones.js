@@ -4,6 +4,14 @@
 let sesionActiva = false;
 
 /* Actualizar menú: muestra/oculta elementos protegidos */
+function actualizarMenu() {
+    const elementosProtegidos = document.querySelectorAll('.menu-protegido');
+    if (elementosProtegidos && elementosProtegidos.length > 0) {
+        elementosProtegidos.forEach(elemento => {
+            elemento.style.display = sesionActiva ? 'block' : 'none';
+        });
+    }
+}
 
 /* Alternar menú móvil */
 function alternarMenu() {
