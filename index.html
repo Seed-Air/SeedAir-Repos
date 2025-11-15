@@ -1,540 +1,175 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>SeedAir - Reforestación con Drones</title>
-    <link href="https://fonts.googleapis.com/css2?family=Afacad:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SeedAir</title>
     <link rel="stylesheet" href="estilos.css">
+    <link rel="icon" type="image/png" href="imagenes/favicon.png">
+    <!-- Google Fonts y otros estilos -->
+    <link href="https://fonts.googleapis.com/css2?family=Afacad:wght@400;700&family=Inter:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Encabezado -->
-    <div class="encabezado">
-        <div class="contenido-encabezado">
-            <div class="contenedor-logo" onclick="mostrarPagina('inicio')">
-                <div class="icono-logo">
-                    <img src="imagenes/logo.png" alt="SeedAir Logo">
+    <header class="header">
+        <div class="logo">
+            <img src="imagenes/logo.png" alt="Logo SeedAir">
+            <h1>SeedAir</h1>
+        </div>
+        <nav>
+            <button class="nav-btn" onclick="mostrarPagina('inicio')">Inicio</button>
+            <button class="nav-btn" onclick="mostrarPagina('reporteZona')">Reportar Zona</button>
+            <button class="nav-btn" onclick="mostrarPagina('contacto')">Contacto</button>
+            <button class="nav-btn" onclick="mostrarPagina('cuenta')">Crear Cuenta</button>
+        </nav>
+    </header>
+
+    <main>
+        <div class="pagina" id="inicio">
+            <div class="contenedor-inicio">
+                <div class="info-inicio">
+                    <h2>Bienvenido a SeedAir</h2>
+                    <p>Plataforma dedicada a mejorar la gestión ambiental y promover la reforestación urbana con el apoyo de la tecnología.</p>
+                    <button class="boton-principal" onclick="mostrarPagina('cuenta')">Crear Cuenta</button>
+                    <button class="boton-principal secundario" onclick="mostrarPagina('iniciar-sesion')">Iniciar Sesión</button>
                 </div>
-                <div class="texto-logo">SeedAir</div>
-            </div>
-            <button class="boton-menu" onclick="alternarMenu()">☰</button>
-            <div class="menu-navegacion" id="menuNav">
-                <button class="item-menu" onclick="mostrarPagina('inicio')">🏠 Inicio</button>
-                <button class="item-menu menu-protegido" onclick="verificarAcceso('campanias')" style="display: none;">🌳 Campañas</button>
-                <button class="item-menu menu-protegido" onclick="verificarAcceso('reportar')" style="display: none;">📍 Reportar</button>
-                <button class="item-menu menu-protegido" onclick="verificarAcceso('impacto')" style="display: none;">📊 Impacto</button>
-                <button class="item-menu" onclick="mostrarPagina('servicios')">⚙️ Servicios</button>
-                <button class="item-menu" onclick="mostrarPagina('recursos')">📚 Recursos</button>
-                <button class="item-menu" onclick="mostrarPagina('equipo')">👥 Equipo</button>
-                <button class="item-menu" onclick="mostrarPagina('nosotros')">ℹ️ Nosotros</button>
-                <button class="item-menu" onclick="mostrarPagina('contacto')">✉️ Contacto</button>
+                <div class="ilustracion-inicio">
+                    <img src="imagenes/arboles-inicio.png" alt="Reforestación con drones">
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- Ventana emergente de acceso -->
-    <div class="ventana-emergente" id="ventanaAcceso">
-        <div class="contenido-ventana">
-            <h3>🔒 Acceso Restringido</h3>
-            <p>Debes crear una cuenta o iniciar sesión para acceder a esta sección.</p>
-            <div class="botones-ventana">
-                <button class="boton-ventana primario" onclick="cerrarVentana(); mostrarPagina('cuenta')">Crear Cuenta</button>
-                <button class="boton-ventana secundario" onclick="cerrarVentana(); mostrarPagina('iniciar-sesion')">Iniciar Sesión</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Página de Inicio -->
-    <div class="pagina activa" id="inicio">
-        <div class="pagina-inicio">
-            <div class="texto-inicio">
-                <h1>Reforesta con nosotros 🌳</h1>
-                <p>Únete a nuestras campañas de voluntariado y contribuye al planeta. Utilizamos drones para sembrar árboles en zonas críticas de Lima.</p>
-                <button class="boton-principal" onclick="mostrarPagina('cuenta')">Crear Cuenta</button>
-                <button class="boton-principal secundario" onclick="mostrarPagina('iniciar-sesion')">Iniciar Sesión</button>
-            </div>
-            <div class="ilustracion-inicio">
-                <img src="imagenes/arboles-inicio.png" alt="Reforestación con drones">
-            </div>
-        </div>
-    </div>
-
-    <!-- Página de Crear Cuenta -->
-    <div class="pagina" id="cuenta">
-        <div class="contenedor-formulario">
-            <h2>Crear Cuenta</h2>
-            <div id="alerta-cuenta" class="alerta"></div>
-            <form id="formularioCuenta" novalidate>
-                <div class="grupo-formulario">
-                    <label>Nombre <span class="obligatorio">*</span></label>
-                    <input type="text" id="nombre" placeholder="Tu nombre" required>
-                    <span class="mensaje-error" id="nombre-error"></span>
-                    <span class="mensaje-correcto" id="nombre-correcto">✓ Correcto</span>
+        <div class="pagina" id="reporteZona" style="display:none;">
+            <div class="contenedor-formulario">
+                <div class="formulario-zona-izquierda">
+                    <iframe src="https://www.google.com/maps/embed?..." width="100%" height="320" style="border:0; border-radius: 18px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
-                <div class="grupo-formulario">
-                    <label>Apellido <span class="obligatorio">*</span></label>
-                    <input type="text" id="apellido" placeholder="Tu apellido" required>
-                    <span class="mensaje-error" id="apellido-error"></span>
-                    <span class="mensaje-correcto" id="apellido-correcto">✓ Correcto</span>
-                </div>
-                <div class="grupo-formulario">
-                    <label>Correo electrónico <span class="obligatorio">*</span></label>
-                    <input type="email" id="correo" placeholder="tu@email.com" required>
-                    <span class="mensaje-error" id="correo-error"></span>
-                    <span class="mensaje-correcto" id="correo-correcto">✓ Correcto</span>
-                </div>
-                <div class="grupo-formulario">
-                    <label>Teléfono <span class="obligatorio">*</span></label>
-                    <input type="tel" id="telefono" placeholder="999 999 999" required>
-                    <span class="mensaje-error" id="telefono-error"></span>
-                    <span class="mensaje-correcto" id="telefono-correcto">✓ Correcto</span>
-                </div>
-                <div class="grupo-formulario">
-                    <label>Contraseña <span class="obligatorio">*</span></label>
-                    <input type="password" id="contrasena" placeholder="Mínimo 8 caracteres" required>
-                    <span class="mensaje-error" id="contrasena-error"></span>
-                    <span class="mensaje-correcto" id="contrasena-correcto">✓ Contraseña segura</span>
-                </div>
-                <div class="grupo-formulario">
-                    <label>Confirmar contraseña <span class="obligatorio">*</span></label>
-                    <input type="password" id="confirmar-contrasena" placeholder="Repite tu contraseña" required>
-                    <span class="mensaje-error" id="confirmar-contrasena-error"></span>
-                    <span class="mensaje-correcto" id="confirmar-contrasena-correcto">✓ Coinciden</span>
-                </div>
-                <button type="submit" class="boton-enviar">Crear Cuenta</button>
-            </form>
-            <p style="text-align: center; margin-top: 1rem; color: var(--azul-oscuro);">
-                ¿Ya tienes cuenta? <a href="#" onclick="mostrarPagina('iniciar-sesion')" style="color: var(--verde-principal); font-weight: 600; text-decoration: none;">Inicia sesión</a>
-            </p>
-        </div>
-    </div>
-
-    <!-- Página de Iniciar Sesión -->
-    <div class="pagina" id="iniciar-sesion">
-        <div class="contenedor-formulario">
-            <h2>Iniciar Sesión</h2>
-            <div id="alerta-sesion" class="alerta"></div>
-            <form id="formularioSesion" novalidate>
-                <div class="grupo-formulario">
-                    <label>Correo electrónico <span class="obligatorio">*</span></label>
-                    <input type="email" id="correo-sesion" placeholder="tu@email.com" required>
-                    <span class="mensaje-error" id="correo-sesion-error"></span>
-                </div>
-                <div class="grupo-formulario">
-                    <label>Contraseña <span class="obligatorio">*</span></label>
-                    <input type="password" id="contrasena-sesion" placeholder="••••••••" required>
-                    <span class="mensaje-error" id="contrasena-sesion-error"></span>
-                </div>
-                <button type="submit" class="boton-enviar">Iniciar Sesión</button>
-            </form>
-            <p style="text-align: center; margin-top: 1rem; color: var(--azul-oscuro);">
-                ¿No tienes cuenta? <a href="#" onclick="mostrarPagina('cuenta')" style="color: var(--verde-principal); font-weight: 600; text-decoration: none;">Regístrate aquí</a>
-            </p>
-        </div>
-    </div>
-
-    <!-- Página de Campañas -->
-    <div class="pagina" id="campanias">
-        <div class="lista-campanias">
-            <h2 style="text-align: center; margin-bottom: 2rem; font-family: 'Afacad', sans-serif; font-size: 3rem; color: var(--blanco);">Campañas Disponibles</h2>
-            <div class="item-campania">
-                <h3>🌲 Bosques Urbanos - San Juan de Lurigancho</h3>
-                <div class="informacion-campania">
-                    <span>📅 15 de Diciembre</span>
-                    <span>⏰ 9:00 AM - 2:00 PM</span>
-                    <span>👥 20 cupos disponibles</span>
-                </div>
-                <p style="margin-bottom: 1rem;">Únete a plantar 200 árboles nativos en zonas críticas del distrito.</p>
-                <button class="boton-unirse" onclick="unirseACampania('Bosques Urbanos')">Unirme a campaña</button>
-            </div>
-            <div class="item-campania">
-                <h3>🌳 Pulmones Verdes - Villa María del Triunfo</h3>
-                <div class="informacion-campania">
-                    <span>📅 18 de Diciembre</span>
-                    <span>⏰ 8:00 AM - 1:00 PM</span>
-                    <span>👥 15 cupos disponibles</span>
-                </div>
-                <p style="margin-bottom: 1rem;">Recuperación de áreas verdes en zonas con déficit arbóreo.</p>
-                <button class="boton-unirse" onclick="unirseACampania('Pulmones Verdes')">Unirme a campaña</button>
-            </div>
-            <div class="item-campania">
-                <h3>🌿 Aire Limpio - Comas</h3>
-                <div class="informacion-campania">
-                    <span>📅 22 de Diciembre</span>
-                    <span>⏰ 10:00 AM - 3:00 PM</span>
-                    <span>👥 25 cupos disponibles</span>
-                </div>
-                <p style="margin-bottom: 1rem;">Campaña de siembra con drones en laderas de difícil acceso.</p>
-                <button class="boton-unirse" onclick="unirseACampania('Aire Limpio')">Unirme a campaña</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Página de Reportar (mapa a la izquierda, formulario a la derecha) -->
-    <div class="pagina" id="reportar">
-        <div class="contenedor-formulario reportar-contenedor">
-            <h2 style="text-align: center; color: var(--azul-oscuro);">Reportar Zona</h2>
-            <div class="reportar-grid">
-                <div class="reportar-mapa">
-                    <img src="imagenes/mapa.png" alt="Mapa de Lima">
-                </div>
-
-                <div class="reportar-form">
-                    <div id="alerta-reporte" class="alerta"></div>
+                <div class="formulario-zona-derecha">
+                    <h2>Reportar Zona</h2>
                     <form id="formularioReporte" novalidate>
                         <div class="grupo-formulario">
                             <label>Distrito <span class="obligatorio">*</span></label>
                             <select id="distrito" required>
                                 <option value="">Selecciona un distrito</option>
-                                <option value="Lima">Lima</option>
-                                <option value="San Juan de Lurigancho">San Juan de Lurigancho</option>
-                                <option value="Villa María del Triunfo">Villa María del Triunfo</option>
-                                <option value="Comas">Comas</option>
-                                <option value="Villa El Salvador">Villa El Salvador</option>
+                                <option value="lince">Lince</option>
+                                <option value="jesus maria">Jesús María</option>
+                                <option value="san isidro">San Isidro</option>
+                                <option value="magdalena">Magdalena</option>
+                                <option value="miraflores">Miraflores</option>
+                                <!-- Agrega más distritos -->
                             </select>
-                            <span class="mensaje-error" id="distrito-error"></span>
+                            <span class="mensaje-error" id="distrito-reporte-error"></span>
                         </div>
-
                         <div class="grupo-formulario">
                             <label>Dirección aproximada <span class="obligatorio">*</span></label>
                             <input type="text" id="direccion" placeholder="Av. Principal 123" required>
-                            <span class="mensaje-error" id="direccion-error"></span>
+                            <span class="mensaje-error" id="direccion-reporte-error"></span>
                         </div>
-
                         <div class="grupo-formulario">
                             <label>Descripción del problema <span class="obligatorio">*</span></label>
                             <textarea id="descripcion" placeholder="Describe la situación de la zona que necesita árboles..." required></textarea>
-                            <span class="mensaje-error" id="descripcion-error"></span>
+                            <span class="mensaje-error" id="descripcion-reporte-error"></span>
                         </div>
-
                         <div class="grupo-formulario">
                             <label>Tu correo <span class="obligatorio">*</span></label>
                             <input type="email" id="correo-reporte" placeholder="tu@email.com" required>
                             <span class="mensaje-error" id="correo-reporte-error"></span>
                         </div>
-
                         <div class="grupo-formulario">
-                            <!-- Botón de subir foto de evidencia (no realiza ninguna acción) -->
-                            <button type="button" class="boton-subir">📷 Subir foto de evidencia</button>
+                            <label style="opacity:0;">Subir foto de evidencia</label>
+                            <input type="file" id="foto-evidencia" accept="image/*">
                         </div>
-
                         <button type="submit" class="boton-enviar">Enviar Reporte</button>
+                        <div id="alerta-reporte" class="alerta"></div>
                     </form>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Página de Impacto (números estáticos sin animación) -->
-    <div class="pagina" id="impacto">
-        <div class="impacto-hero">
-            <div class="impacto-contenido">
-                <div class="impacto-texto">
-                    <div class="impacto-logo">
-                        <img src="imagenes/logo.png" alt="SeedAir logo pequeño" style="width:72px;">
-                    </div>
-                    <h2>Impacto Ambiental</h2>
-                    <p class="impacto-desc">Resultados acumulados de nuestras campañas de reforestación urbana en Lima. Seguimos plantando, recuperando y mejorando la calidad de vida en los distritos más necesitados.</p>
-
-                    <div class="impacto-stats">
-                        <div class="stat">
-                            <div class="stat-icon">
-                                <img src="imagenes/impacto-arbol.png" alt="Icono árbol — Árboles sembrados">
-                            </div>
-                            <div class="stat-info">
-                                <h3 class="stat-number">5,247</h3>
-                                <p>Árboles sembrados</p>
-                            </div>
+        <div class="pagina" id="contacto" style="display:none;">
+            <div class="contenedor-formulario">
+                <div class="formulario-zona-derecha" style="margin:auto;">
+                    <h2>Contacto</h2>
+                    <form id="formularioContacto" novalidate>
+                        <div class="grupo-formulario">
+                            <label>Nombre <span class="obligatorio">*</span></label>
+                            <input type="text" id="nombre-contacto" placeholder="Tu nombre" required>
+                            <span class="mensaje-error" id="nombre-contacto-error"></span>
                         </div>
-
-                        <div class="stat">
-                            <div class="stat-icon">
-                                <img src="imagenes/impacto-co2.png" alt="Icono CO2 — CO₂ absorbido">
-                            </div>
-                            <div class="stat-info">
-                                <h3 class="stat-number">156 <span class="small">ton</span></h3>
-                                <p>CO₂ absorbido</p>
-                            </div>
+                        <div class="grupo-formulario">
+                            <label>Correo <span class="obligatorio">*</span></label>
+                            <input type="email" id="correo-contacto" placeholder="tu@email.com" required>
+                            <span class="mensaje-error" id="correo-contacto-error"></span>
                         </div>
-
-                        <div class="stat">
-                            <div class="stat-icon">
-                                <img src="imagenes/impacto-temperatura.png" alt="Icono temperatura — Reducción promedio de temperatura">
-                            </div>
-                            <div class="stat-info">
-                                <h3 class="stat-number-temp">1.5°C</h3>
-                                <p>Reducción promedio de temperatura</p>
-                            </div>
+                        <div class="grupo-formulario">
+                            <label>Teléfono <span class="obligatorio">*</span></label>
+                            <input type="tel" id="telefono-contacto" placeholder="999 999 999" required>
+                            <span class="mensaje-error" id="telefono-contacto-error"></span>
                         </div>
-                    </div>
-
-                    <div class="impacto-meta">
-                        <p><strong>Tasa de supervivencia:</strong> 89% · <strong>Distritos atendidos:</strong> 12 · <strong>Voluntarios activos:</strong> 842</p>
-                    </div>
-
-                    <div class="impacto-acciones">
-                        <button class="boton-principal" onclick="mostrarPagina('campanias')">Ver campañas</button>
-                        <button class="boton-secundario" onclick="abrirMapaImpacto()">Ver detalles por distrito</button>
-                    </div>
-                </div>
-
-                <div class="impacto-mapa">
-                    <div class="mapa-card" role="button" onclick="abrirMapaImpacto()">
-                        <img src="imagenes/impacto-mapa-lima.png" alt="Mapa de Lima con distritos atendidos">
-                        <div class="mapa-overlay">
-                            <span>Explora por distrito</span>
+                        <div class="grupo-formulario">
+                            <label>Asunto <span class="obligatorio">*</span></label>
+                            <input type="text" id="asunto" required>
+                            <span class="mensaje-error" id="asunto-contacto-error"></span>
                         </div>
-                    </div>
+                        <div class="grupo-formulario">
+                            <label>Mensaje <span class="obligatorio">*</span></label>
+                            <textarea id="mensaje" placeholder="Tu mensaje..." required></textarea>
+                            <span class="mensaje-error" id="mensaje-contacto-error"></span>
+                        </div>
+                        <button type="submit" class="boton-enviar">Enviar Mensaje</button>
+                        <div id="alerta-contacto" class="alerta"></div>
+                    </form>
                 </div>
             </div>
         </div>
 
-        <!-- Modal para mapa ampliado -->
-        <div id="modalMapaImpacto" class="modal-mapa" aria-hidden="true">
-            <div class="modal-contenido">
-                <button class="modal-cerrar" onclick="cerrarMapaImpacto()" aria-label="Cerrar mapa">✕</button>
-                <img src="imagenes/impacto-mapa-lima.png" alt="Mapa ampliado de distritos atendidos">
-                <div class="modal-leyenda">
-                    <p><strong>Distritos atendidos:</strong> Zonas en verde son áreas donde hemos intervenido. En la versión final puedes integrar un mapa interactivo con capas por distrito para mayor detalle.</p>
+        <div class="pagina" id="cuenta" style="display:none;">
+            <div class="contenedor-formulario">
+                <div class="formulario-zona-derecha" style="margin:auto;">
+                    <h2>Crear Cuenta</h2>
+                    <form id="formularioCuenta" novalidate>
+                        <div class="grupo-formulario">
+                            <label>Nombre <span class="obligatorio">*</span></label>
+                            <input type="text" id="nombre" placeholder="Tu nombre" required>
+                            <span class="mensaje-error" id="nombre-error"></span>
+                        </div>
+                        <div class="grupo-formulario">
+                            <label>Apellido <span class="obligatorio">*</span></label>
+                            <input type="text" id="apellido" placeholder="Tu apellido" required>
+                            <span class="mensaje-error" id="apellido-error"></span>
+                        </div>
+                        <div class="grupo-formulario">
+                            <label>Correo electrónico <span class="obligatorio">*</span></label>
+                            <input type="email" id="correo" placeholder="tu@email.com" required>
+                            <span class="mensaje-error" id="correo-error"></span>
+                        </div>
+                        <div class="grupo-formulario">
+                            <label>Teléfono <span class="obligatorio">*</span></label>
+                            <input type="tel" id="telefono" placeholder="999 999 999" required>
+                            <span class="mensaje-error" id="telefono-error"></span>
+                        </div>
+                        <div class="grupo-formulario">
+                            <label>Contraseña <span class="obligatorio">*</span></label>
+                            <input type="password" id="contrasena" placeholder="Mínimo 8 caracteres" required>
+                            <span class="mensaje-error" id="contrasena-error"></span>
+                        </div>
+                        <div class="grupo-formulario">
+                            <label>Confirmar contraseña <span class="obligatorio">*</span></label>
+                            <input type="password" id="confirmar-contrasena" placeholder="Repite tu contraseña" required>
+                            <span class="mensaje-error" id="confirmar-contrasena-error"></span>
+                        </div>
+                        <button type="submit" class="boton-enviar">Crear Cuenta</button>
+                        <div id="alerta-cuenta" class="alerta"></div>
+                    </form>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 
-    <!-- Página de Servicios -->
-    <div class="pagina" id="servicios">
-        <div style="max-width: 1200px; margin: 0 auto;">
-            <h2 style="text-align: center; margin-bottom: 3rem; font-family: 'Afacad', sans-serif; font-size: 3rem;">Servicios</h2>
-            <div class="cuadricula-tarjetas">
-                <div class="tarjeta" onclick="alert('Próximamente: Blog educativo sobre sostenibilidad')">
-                    <div class="icono-tarjeta">
-                        <img src="imagenes/icono-blog.png" alt="Blog">
-                    </div>
-                    <h3>Blog de educación ambiental</h3>
-                    <p>Aprende sobre sostenibilidad y cuidado del medio ambiente</p>
-                </div>
-                <div class="tarjeta" onclick="alert('Próximamente: Testimonios de voluntarios')">
-                    <div class="icono-tarjeta">
-                        <img src="imagenes/icono-testimonios.png" alt="Testimonios">
-                    </div>
-                    <h3>Testimonios</h3>
-                    <p>Conoce las experiencias de nuestros voluntarios</p>
-                </div>
-                <div class="tarjeta" onclick="alert('Próximamente: Tienda ecológica')">
-                    <div class="icono-tarjeta">
-                        <img src="imagenes/icono-tienda.png" alt="Tienda">
-                    </div>
-                    <h3>Tienda</h3>
-                    <p>Productos ecológicos y sostenibles</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Página de Recursos -->
-    <div class="pagina" id="recursos">
-        <div class="contenedor-recursos">
-            <h2 style="text-align: center; margin-bottom: 1.5rem; font-family: 'Afacad', sans-serif; font-size: 3rem;">Recursos</h2>
-            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 3rem; opacity: 0.9;">
-                ¡Aprovecha al máximo SeedAir con nuestras guías y tutoriales!
-            </p>
-
-            <div class="seccion-recursos">
-                <div class="info-recursos">
-                    <h3>📹 Videos Tutoriales</h3>
-                    <p>Aquí encontrarás guías detalladas y videos tutoriales que te enseñarán a utilizar todas las funcionalidades de SeedAir, desde el uso del Mapa Interactivo hasta la manera de contribuir en nuestras campañas de reforestación.</p>
-                </div>
-
-                <div class="video-recursos">
-                    <h4>Áreas verdes en los distritos de Lima</h4>
-                    <p>Conoce la problemática de la escasez de áreas verdes en Lima y cómo SeedAir contribuye a solucionarlo.</p>
-                    <div class="video-contenedor">
-                        <iframe width="100%" height="315" src="https://www.youtube.com/embed/1GjOKdz2X68?si=e9AUkONvdFqcjsfp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                </div>
-
-                <div class="video-recursos">
-                    <h4>Cómo usar Google Maps profesionalmente</h4>
-                    <p>Aprende a utilizar Google Maps para reportar zonas que necesitan reforestación y ubicar nuestras campañas.</p>
-                    <div class="video-contenedor">
-                        <iframe width="100%" height="315" src="https://www.youtube.com/embed/FY71lqsH1Sk?si=uF7CH_HgLNEVX_uM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                    </div>
-                </div>
-
-                <div class="guias-recursos">
-                    <h3>📋 Guías Detalladas</h3>
-                    <div class="lista-guias">
-                        <a href="#" class="item-guia">
-                            <span>▶</span> Navegando el Mapa Interactivo
-                        </a>
-                        <a href="#" class="item-guia">
-                            <span>▶</span> Cómo reportar una zona sin árboles
-                        </a>
-                        <a href="#" class="item-guia">
-                            <span>▶</span> Unirse a campañas de reforestación
-                        </a>
-                        <a href="#" class="item-guia">
-                            <span>▶</span> Accesibilidad y uso del transporte público
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Página de Equipo -->
-    <div class="pagina" id="equipo">
-        <div style="max-width: 1200px; margin: 0 auto;">
-            <h2 style="text-align: center; margin-bottom: 3rem; font-family: 'Afacad', sans-serif; font-size: 3rem;">Nuestro Equipo</h2>
-            <div class="cuadricula-tarjetas">
-                <div class="tarjeta">
-                    <div class="foto-equipo">
-                        <img src="imagenes/foto-cesar.png" alt="César Gamboa">
-                    </div>
-                    <h3>César Gamboa</h3>
-                    <p>Ingeniero de Sistemas</p>
-                </div>
-                <div class="tarjeta">
-                    <div class="foto-equipo">
-                        <img src="imagenes/foto-gino.png" alt="Gino Torres">
-                    </div>
-                    <h3>Gino Torres</h3>
-                    <p>Ingeniero de Software</p>
-                </div>
-                <div class="tarjeta">
-                    <div class="foto-equipo">
-                        <img src="imagenes/foto-gonzalo.png" alt="Gonzalo Vásquez">
-                    </div>
-                    <h3>Gonzalo Vásquez</h3>
-                    <p>Ingeniero de Sistemas</p>
-                </div>
-                <div class="tarjeta">
-                    <div class="foto-equipo">
-                        <img src="imagenes/foto-jose.png" alt="José Santana">
-                    </div>
-                    <h3>José Santana</h3>
-                    <p>Ingeniero de Software</p>
-                </div>
-                <div class="tarjeta">
-                    <div class="foto-equipo">
-                        <img src="imagenes/foto-juan.png" alt="Juan Finetti">
-                    </div>
-                    <h3>Juan Finetti</h3>
-                    <p>Ingeniero de Sistemas</p>
-                </div>
-                <div class="tarjeta">
-                    <div class="foto-equipo">
-                        <img src="imagenes/foto-luana.png" alt="Luana Lorenzo">
-                    </div>
-                    <h3>Luana Lorenzo</h3>
-                    <p>Ingeniera de Sistemas</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Página de Nosotros -->
-    <div class="pagina" id="nosotros">
-        <div class="pagina-contenido">
-            <h2>Nosotros</h2>
-            <p>Green Allies, una startup integrada por estudiantes de la Facultad de Ingeniería de la UPC, ha lanzado SeedAir, un proyecto de reforestación con drones enfocado en los distritos con menor porcentaje de áreas verdes por metro cuadrado.</p>
-            <p>Esta iniciativa busca optimizar la siembra de árboles mediante tecnología aérea, identificando zonas prioritarias y acelerando los procesos de recuperación ambiental.</p>
-            <p>El objetivo principal es reducir la desigualdad en el acceso a espacios verdes, mejorar la calidad del aire y contribuir a una ciudad más sostenible.</p>
-            <div style="margin-top: 2rem;">
-                <h3 style="color: var(--verde-principal); margin-bottom: 1rem;">Misión</h3>
-                <p>Facilitar la reforestación urbana en los distritos con menor cobertura arbórea mediante el uso de drones y análisis de datos, optimizando la siembra de árboles, promoviendo la participación comunitaria y contribuyendo a mejorar la calidad ambiental en la ciudad.</p>
-            </div>
-            <div style="margin-top: 2rem;">
-                <h3 style="color: var(--verde-principal); margin-bottom: 1rem;">Visión</h3>
-                <p>Ser la referencia nacional en reforestación con tecnología, impulsando la creación de ciudades más verdes, sostenibles y equitativas, donde todas las personas puedan disfrutar de espacios urbanos saludables.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Página de Contacto -->
-    <div class="pagina" id="contacto">
-        <div class="contenedor-formulario">
-            <h2>Contáctanos</h2>
-            <div id="alerta-contacto" class="alerta"></div>
-            <form id="formularioContacto" novalidate>
-                <div class="grupo-formulario">
-                    <label>Nombre completo <span class="obligatorio">*</span></label>
-                    <input type="text" id="nombre-contacto" placeholder="Tu nombre completo" required>
-                    <span class="mensaje-error" id="nombre-contacto-error"></span>
-                </div>
-                <div class="grupo-formulario">
-                    <label>Correo electrónico <span class="obligatorio">*</span></label>
-                    <input type="email" id="correo-contacto" placeholder="tu@email.com" required>
-                    <span class="mensaje-error" id="correo-contacto-error"></span>
-                </div>
-                <div class="grupo-formulario">
-                    <label>Teléfono <span class="obligatorio">*</span></label>
-                    <input type="tel" id="telefono-contacto" placeholder="999 999 999" required>
-                    <span class="mensaje-error" id="telefono-contacto-error"></span>
-                </div>
-                <div class="grupo-formulario">
-                    <label>Asunto <span class="obligatorio">*</span></label>
-                    <select id="asunto" required>
-                        <option value="">Selecciona un asunto</option>
-                        <option value="informacion">Información general</option>
-                        <option value="colaboracion">Colaboración</option>
-                        <option value="voluntariado">Voluntariado</option>
-                        <option value="donacion">Donación</option>
-                        <option value="otro">Otro</option>
-                    </select>
-                    <span class="mensaje-error" id="asunto-error"></span>
-                </div>
-                <div class="grupo-formulario">
-                    <label>Mensaje <span class="obligatorio">*</span></label>
-                    <textarea id="mensaje" placeholder="Escribe tu mensaje aquí..." required></textarea>
-                    <span class="mensaje-error" id="mensaje-error"></span>
-                </div>
-                <button type="submit" class="boton-enviar">Enviar Mensaje</button>
-            </form>
-        </div>
-    </div>
+    <footer class="footer">
+        <p>&copy; 2025 SeedAir. Todos los derechos reservados.</p>
+    </footer>
 
     <script src="funciones.js"></script>
-
-    <!-- Pie de página -->
-    <footer class="pie-pagina">
-        <div class="contenido-pie">
-            <div class="columna-pie">
-                <div class="logo-pie">
-                    <div class="logo-pie-icono">
-                        <img src="imagenes/logo.png" alt="SeedAir">
-                    </div>
-                    <span>SeedAir</span>
-                </div>
-                <p>Reforestación con drones para un futuro más verde. Trabajamos por la recuperación de áreas verdes en Lima y la lucha contra el cambio climático.</p>
-            </div>
-            
-            <div class="columna-pie">
-                <h3>Empresa</h3>
-                <a href="#" onclick="mostrarPagina('nosotros')">Acerca de Nosotros</a>
-                <a href="#" onclick="mostrarPagina('equipo')">Nuestro Equipo</a>
-                <a href="#" onclick="mostrarPagina('contacto')">Contáctanos</a>
-            </div>
-            
-            <div class="columna-pie">
-                <h3>Soporte</h3>
-                <a href="#" onclick="mostrarPagina('contacto')">Centro de Ayuda</a>
-                <a href="#">Términos de Servicio</a>
-                <a href="#">Legal</a>
-                <a href="#">Política de Privacidad</a>
-            </div>
-            
-            <div class="columna-pie">
-                <h3>Mantente al día</h3>
-                <p>Suscríbete para recibir noticias sobre campañas.</p>
-                <input type="email" class="campo-suscripcion" placeholder="Tu correo electrónico">
-                <button class="boton-suscribir">Suscribirse</button>
-            </div>
-        </div>
-        
-        <div class="derechos-autor">
-            <p>Copyright © 2024 SeedAir - Green Allies.</p>
-        </div>
-    </footer>
 </body>
 </html>
