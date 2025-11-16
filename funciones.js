@@ -1,7 +1,6 @@
 /* Control de sesión del usuario */
 let sesionActiva = false;
 
-/* Actualizar menú: muestra/oculta elementos protegidos */
 function actualizarMenu() {
     const elementosProtegidos = document.querySelectorAll('.menu-protegido');
     if (elementosProtegidos && elementosProtegidos.length > 0) {
