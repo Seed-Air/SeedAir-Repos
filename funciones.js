@@ -1,5 +1,3 @@
-// Código completo (copia todo este archivo a funciones.js)
-
 /* Control de sesión del usuario */
 let sesionActiva = false;
 
