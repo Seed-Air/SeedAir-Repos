@@ -1,4 +1,3 @@
-/* Control de sesión del usuario */
 let sesionActiva = false;
 
 /* Actualizar menú: muestra/oculta elementos protegidos */
