@@ -33,3 +33,4 @@ SeedAir-Repos está dirigido a desarrolladores, equipos técnicos y colaboradore
 
 ---
 
+¿Quieres contribuir o mejorar la plataforma? ¡Tu participación es bienvenida!
