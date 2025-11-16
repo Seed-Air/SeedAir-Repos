@@ -1,17 +1,4 @@
-{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
-:root {
-    --azul-oscuro: #2d5f6d;
-    --verde-principal: #8BC34A;
-    --fondo-claro: #e8f0f2;
-    --blanco: #FFFFFF;
-    --rojo-error: #e74c3c;
-    --verde-exito: #27ae60;
-}
 
 body {
     font-family: 'Inter', sans-serif;
