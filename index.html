@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-    <!-- Encabezado -->
     <div class="encabezado">
         <div class="contenido-encabezado">
             <div class="contenedor-logo" onclick="mostrarPagina('inicio')">
@@ -28,11 +27,14 @@
                 <button class="item-menu" onclick="mostrarPagina('equipo')">👥 Equipo</button>
                 <button class="item-menu" onclick="mostrarPagina('nosotros')">ℹ️ Nosotros</button>
                 <button class="item-menu" onclick="mostrarPagina('contacto')">✉️ Contacto</button>
+                <button class="item-menu" onclick="mostrarModalComandoVoz()">
+                    <img src="imagenes/comandovoz.png" alt="Comando de Voz" style="width: 20px; height: 20px; vertical-align: middle; margin-right: 5px;">
+                    Comando de Voz
+                </button>
             </div>
         </div>
     </div>
 
-    <!-- Ventana emergente de acceso -->
     <div class="ventana-emergente" id="ventanaAcceso">
         <div class="contenido-ventana">
             <h3>🔒 Acceso Restringido</h3>
@@ -44,7 +46,17 @@
         </div>
     </div>
 
-    <!-- Página de Inicio -->
+    <div class="ventana-emergente" id="ventanaComandoVoz">
+        <div class="contenido-ventana">
+            <h3>🎤 Comandos por Voz</h3>
+            <p>¿Deseas activar los comandos por voz?</p>
+            <div style="display: flex; gap: 2rem; justify-content: center; margin-top: 2rem;">
+                <button class="boton-ventana-voz activar" onclick="activarComandoVoz()" title="Activar comandos de voz">✓</button>
+                <button class="boton-ventana-voz cancelar" onclick="cerrarModalComandoVoz()" title="Cancelar">✕</button>
+            </div>
+        </div>
+    </div>
+
     <div class="pagina activa" id="inicio">
         <div class="pagina-inicio">
             <div class="texto-inicio">
@@ -59,7 +71,6 @@
         </div>
     </div>
 
-    <!-- Página de Crear Cuenta -->
     <div class="pagina" id="cuenta">
         <div class="contenedor-formulario">
             <h2>Crear Cuenta</h2>
@@ -109,7 +120,6 @@
         </div>
     </div>
 
-    <!-- Página de Iniciar Sesión -->
     <div class="pagina" id="iniciar-sesion">
         <div class="contenedor-formulario">
             <h2>Iniciar Sesión</h2>
@@ -133,7 +143,6 @@
         </div>
     </div>
 
-    <!-- Página de Campañas -->
     <div class="pagina" id="campanias">
         <div class="lista-campanias">
             <h2 style="text-align: center; margin-bottom: 2rem; font-family: 'Afacad', sans-serif; font-size: 3rem; color: var(--blanco);">Campañas Disponibles</h2>
@@ -170,7 +179,6 @@
         </div>
     </div>
 
-    <!-- Página de Reportar (mapa a la izquierda, formulario a la derecha) -->
     <div class="pagina" id="reportar">
         <div class="contenedor-formulario reportar-contenedor">
             <h2 style="text-align: center; color: var(--azul-oscuro);">Reportar Zona</h2>
@@ -178,7 +186,6 @@
                 <div class="reportar-mapa">
                     <img src="imagenes/mapa.png" alt="Mapa de Lima">
                 </div>
-
                 <div class="reportar-form">
                     <div id="alerta-reporte" class="alerta"></div>
                     <form id="formularioReporte" novalidate>
@@ -194,30 +201,24 @@
                             </select>
                             <span class="mensaje-error" id="distrito-error"></span>
                         </div>
-
                         <div class="grupo-formulario">
                             <label>Dirección aproximada <span class="obligatorio">*</span></label>
                             <input type="text" id="direccion" placeholder="Av. Principal 123" required>
                             <span class="mensaje-error" id="direccion-error"></span>
                         </div>
-
                         <div class="grupo-formulario">
                             <label>Descripción del problema <span class="obligatorio">*</span></label>
                             <textarea id="descripcion" placeholder="Describe la situación de la zona que necesita árboles..." required></textarea>
                             <span class="mensaje-error" id="descripcion-error"></span>
                         </div>
-
                         <div class="grupo-formulario">
                             <label>Tu correo <span class="obligatorio">*</span></label>
                             <input type="email" id="correo-reporte" placeholder="tu@email.com" required>
                             <span class="mensaje-error" id="correo-reporte-error"></span>
                         </div>
-
                         <div class="grupo-formulario">
-                            <!-- Botón de subir foto de evidencia (no realiza ninguna acción) -->
                             <button type="button" class="boton-subir">📷 Subir foto de evidencia</button>
                         </div>
-
                         <button type="submit" class="boton-enviar">Enviar Reporte</button>
                     </form>
                 </div>
@@ -225,7 +226,6 @@
         </div>
     </div>
 
-    <!-- Página de Impacto (números estáticos sin animación) -->
     <div class="pagina" id="impacto">
         <div class="impacto-hero">
             <div class="impacto-contenido">
@@ -235,7 +235,6 @@
                     </div>
                     <h2>Impacto Ambiental</h2>
                     <p class="impacto-desc">Resultados acumulados de nuestras campañas de reforestación urbana en Lima. Seguimos plantando, recuperando y mejorando la calidad de vida en los distritos más necesitados.</p>
-
                     <div class="impacto-stats">
                         <div class="stat">
                             <div class="stat-icon">
@@ -246,7 +245,6 @@
                                 <p>Árboles sembrados</p>
                             </div>
                         </div>
-
                         <div class="stat">
                             <div class="stat-icon">
                                 <img src="imagenes/impacto-co2.png" alt="Icono CO2 — CO₂ absorbido">
@@ -256,7 +254,6 @@
                                 <p>CO₂ absorbido</p>
                             </div>
                         </div>
-
                         <div class="stat">
                             <div class="stat-icon">
                                 <img src="imagenes/impacto-temperatura.png" alt="Icono temperatura — Reducción promedio de temperatura">
@@ -267,17 +264,14 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="impacto-meta">
                         <p><strong>Tasa de supervivencia:</strong> 89% · <strong>Distritos atendidos:</strong> 12 · <strong>Voluntarios activos:</strong> 842</p>
                     </div>
-
                     <div class="impacto-acciones">
                         <button class="boton-principal" onclick="mostrarPagina('campanias')">Ver campañas</button>
                         <button class="boton-secundario" onclick="abrirMapaImpacto()">Ver detalles por distrito</button>
                     </div>
                 </div>
-
                 <div class="impacto-mapa">
                     <div class="mapa-card" role="button" onclick="abrirMapaImpacto()">
                         <img src="imagenes/impacto-mapa-lima.png" alt="Mapa de Lima con distritos atendidos">
@@ -288,8 +282,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- Modal para mapa ampliado -->
         <div id="modalMapaImpacto" class="modal-mapa" aria-hidden="true">
             <div class="modal-contenido">
                 <button class="modal-cerrar" onclick="cerrarMapaImpacto()" aria-label="Cerrar mapa">✕</button>
@@ -301,7 +293,6 @@
         </div>
     </div>
 
-    <!-- Página de Servicios -->
     <div class="pagina" id="servicios">
         <div style="max-width: 1200px; margin: 0 auto;">
             <h2 style="text-align: center; margin-bottom: 3rem; font-family: 'Afacad', sans-serif; font-size: 3rem;">Servicios</h2>
@@ -331,20 +322,15 @@
         </div>
     </div>
 
-    <!-- Página de Recursos -->
     <div class="pagina" id="recursos">
         <div class="contenedor-recursos">
             <h2 style="text-align: center; margin-bottom: 1.5rem; font-family: 'Afacad', sans-serif; font-size: 3rem;">Recursos</h2>
-            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 3rem; opacity: 0.9;">
-                ¡Aprovecha al máximo SeedAir con nuestras guías y tutoriales!
-            </p>
-
+            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 3rem; opacity: 0.9;">¡Aprovecha al máximo SeedAir con nuestras guías y tutoriales!</p>
             <div class="seccion-recursos">
                 <div class="info-recursos">
                     <h3>📹 Videos Tutoriales</h3>
                     <p>Aquí encontrarás guías detalladas y videos tutoriales que te enseñarán a utilizar todas las funcionalidades de SeedAir, desde el uso del Mapa Interactivo hasta la manera de contribuir en nuestras campañas de reforestación.</p>
                 </div>
-
                 <div class="video-recursos">
                     <h4>Áreas verdes en los distritos de Lima</h4>
                     <p>Conoce la problemática de la escasez de áreas verdes en Lima y cómo SeedAir contribuye a solucionarlo.</p>
@@ -352,7 +338,6 @@
                         <iframe width="100%" height="315" src="https://www.youtube.com/embed/1GjOKdz2X68?si=e9AUkONvdFqcjsfp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
                 </div>
-
                 <div class="video-recursos">
                     <h4>Cómo usar Google Maps profesionalmente</h4>
                     <p>Aprende a utilizar Google Maps para reportar zonas que necesitan reforestación y ubicar nuestras campañas.</p>
@@ -360,72 +345,50 @@
                         <iframe width="100%" height="315" src="https://www.youtube.com/embed/FY71lqsH1Sk?si=uF7CH_HgLNEVX_uM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
                 </div>
-
                 <div class="guias-recursos">
                     <h3>📋 Guías Detalladas</h3>
                     <div class="lista-guias">
-                        <a href="#" class="item-guia">
-                            <span>▶</span> Navegando el Mapa Interactivo
-                        </a>
-                        <a href="#" class="item-guia">
-                            <span>▶</span> Cómo reportar una zona sin árboles
-                        </a>
-                        <a href="#" class="item-guia">
-                            <span>▶</span> Unirse a campañas de reforestación
-                        </a>
-                        <a href="#" class="item-guia">
-                            <span>▶</span> Accesibilidad y uso del transporte público
-                        </a>
+                        <a href="#" class="item-guia"><span>▶</span> Navegando el Mapa Interactivo</a>
+                        <a href="#" class="item-guia"><span>▶</span> Cómo reportar una zona sin árboles</a>
+                        <a href="#" class="item-guia"><span>▶</span> Unirse a campañas de reforestación</a>
+                        <a href="#" class="item-guia"><span>▶</span> Accesibilidad y uso del transporte público</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Página de Equipo -->
     <div class="pagina" id="equipo">
         <div style="max-width: 1200px; margin: 0 auto;">
             <h2 style="text-align: center; margin-bottom: 3rem; font-family: 'Afacad', sans-serif; font-size: 3rem;">Nuestro Equipo</h2>
             <div class="cuadricula-tarjetas">
                 <div class="tarjeta">
-                    <div class="foto-equipo">
-                        <img src="imagenes/foto-cesar.png" alt="César Gamboa">
-                    </div>
+                    <div class="foto-equipo"><img src="imagenes/foto-cesar.png" alt="César Gamboa"></div>
                     <h3>César Gamboa</h3>
                     <p>Ingeniero de Sistemas</p>
                 </div>
                 <div class="tarjeta">
-                    <div class="foto-equipo">
-                        <img src="imagenes/foto-gino.png" alt="Gino Torres">
-                    </div>
+                    <div class="foto-equipo"><img src="imagenes/foto-gino.png" alt="Gino Torres"></div>
                     <h3>Gino Torres</h3>
                     <p>Ingeniero de Software</p>
                 </div>
                 <div class="tarjeta">
-                    <div class="foto-equipo">
-                        <img src="imagenes/foto-gonzalo.png" alt="Gonzalo Vásquez">
-                    </div>
+                    <div class="foto-equipo"><img src="imagenes/foto-gonzalo.png" alt="Gonzalo Vásquez"></div>
                     <h3>Gonzalo Vásquez</h3>
                     <p>Ingeniero de Sistemas</p>
                 </div>
                 <div class="tarjeta">
-                    <div class="foto-equipo">
-                        <img src="imagenes/foto-jose.png" alt="José Santana">
-                    </div>
+                    <div class="foto-equipo"><img src="imagenes/foto-jose.png" alt="José Santana"></div>
                     <h3>José Santana</h3>
                     <p>Ingeniero de Software</p>
                 </div>
                 <div class="tarjeta">
-                    <div class="foto-equipo">
-                        <img src="imagenes/foto-juan.png" alt="Juan Finetti">
-                    </div>
+                    <div class="foto-equipo"><img src="imagenes/foto-juan.png" alt="Juan Finetti"></div>
                     <h3>Juan Finetti</h3>
                     <p>Ingeniero de Sistemas</p>
                 </div>
                 <div class="tarjeta">
-                    <div class="foto-equipo">
-                        <img src="imagenes/foto-luana.png" alt="Luana Lorenzo">
-                    </div>
+                    <div class="foto-equipo"><img src="imagenes/foto-luana.png" alt="Luana Lorenzo"></div>
                     <h3>Luana Lorenzo</h3>
                     <p>Ingeniera de Sistemas</p>
                 </div>
@@ -433,7 +396,21 @@
         </div>
     </div>
 
-    <!-- Página de Nosotros -->
+    <div class="pagina" id="comando-voz">
+        <div class="contenedor-comando-voz">
+            <button class="boton-cerrar-voz" onclick="mostrarPagina('inicio')" title="Cerrar">✕</button>
+            <h2 class="titulo-voz">Comandos por voz</h2>
+            <div class="tarjeta-voz" role="status" aria-live="polite">
+                <p id="texto-reconocido">Presiona para hablar</p>
+            </div>
+            <div class="contenedor-microfono">
+                <div class="microfono-icono" id="botonMicrofono" onclick="alternarReconocimiento()" title="Pulsa para hablar" role="button" aria-pressed="false" aria-label="Activar reconocimiento de voz">
+                    <img src="imagenes/microfono.png" alt="Micrófono">
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="pagina" id="nosotros">
         <div class="pagina-contenido">
             <h2>Nosotros</h2>
@@ -451,7 +428,6 @@
         </div>
     </div>
 
-    <!-- Página de Contacto -->
     <div class="pagina" id="contacto">
         <div class="contenedor-formulario">
             <h2>Contáctanos</h2>
@@ -496,7 +472,6 @@
 
     <script src="funciones.js"></script>
 
-    <!-- Pie de página -->
     <footer class="pie-pagina">
         <div class="contenido-pie">
             <div class="columna-pie">
@@ -508,14 +483,12 @@
                 </div>
                 <p>Reforestación con drones para un futuro más verde. Trabajamos por la recuperación de áreas verdes en Lima y la lucha contra el cambio climático.</p>
             </div>
-            
             <div class="columna-pie">
                 <h3>Empresa</h3>
                 <a href="#" onclick="mostrarPagina('nosotros')">Acerca de Nosotros</a>
                 <a href="#" onclick="mostrarPagina('equipo')">Nuestro Equipo</a>
                 <a href="#" onclick="mostrarPagina('contacto')">Contáctanos</a>
             </div>
-            
             <div class="columna-pie">
                 <h3>Soporte</h3>
                 <a href="#" onclick="mostrarPagina('contacto')">Centro de Ayuda</a>
@@ -523,7 +496,6 @@
                 <a href="#">Legal</a>
                 <a href="#">Política de Privacidad</a>
             </div>
-            
             <div class="columna-pie">
                 <h3>Mantente al día</h3>
                 <p>Suscríbete para recibir noticias sobre campañas.</p>
@@ -531,7 +503,6 @@
                 <button class="boton-suscribir">Suscribirse</button>
             </div>
         </div>
-        
         <div class="derechos-autor">
             <p>Copyright © 2024 SeedAir - Green Allies.</p>
         </div>
