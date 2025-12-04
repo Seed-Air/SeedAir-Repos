@@ -1,4 +1,3 @@
-let sesionActiva = false;
 
 function actualizarMenu() {
     const elementosProtegidos = document.querySelectorAll('.menu-protegido');
