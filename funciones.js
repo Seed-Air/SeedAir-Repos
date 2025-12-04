@@ -1,7 +1,5 @@
-/* Control de sesión del usuario */
 let sesionActiva = false;
 
-/* Actualizar menú: muestra/oculta elementos protegidos */
 function actualizarMenu() {
     const elementosProtegidos = document.querySelectorAll('.menu-protegido');
     if (elementosProtegidos && elementosProtegidos.length > 0) {
@@ -11,13 +9,11 @@ function actualizarMenu() {
     }
 }
 
-/* Alternar menú móvil */
 function alternarMenu() {
     const menuNav = document.getElementById('menuNav');
     if (menuNav) menuNav.classList.toggle('activo');
 }
 
-/* Verificar acceso a páginas protegidas */
 function verificarAcceso(nombrePagina) {
     if (!sesionActiva) {
         const ventana = document.getElementById('ventanaAcceso');
@@ -27,13 +23,11 @@ function verificarAcceso(nombrePagina) {
     }
 }
 
-/* Cerrar ventana emergente */
 function cerrarVentana() {
     const ventana = document.getElementById('ventanaAcceso');
     if (ventana) ventana.classList.remove('mostrar');
 }
 
-/* Mostrar página (maneja la navegación interna) */
 function mostrarPagina(nombrePagina) {
     const paginas = document.querySelectorAll('.pagina');
     paginas.forEach(pagina => pagina.classList.remove('activa'));
@@ -47,7 +41,6 @@ function mostrarPagina(nombrePagina) {
     window.scrollTo(0, 0);
 }
 
-/* Validar campo con reglas pasadas */
 function validarCampo(campo, validaciones) {
     if (!campo) return true;
     const valor = campo.value.trim();
@@ -74,12 +67,7 @@ function validarCampo(campo, validaciones) {
     return true;
 }
 
-/* --------------------------
-   Validaciones y formularios
-   -------------------------- */
-
 document.addEventListener('DOMContentLoaded', function() {
-    /* Campos registro */
     const campoNombre = document.getElementById('nombre');
     if (campoNombre) {
         campoNombre.addEventListener('input', function() {
@@ -144,7 +132,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    /* Enviar formulario de cuenta */
     const formularioCuenta = document.getElementById('formularioCuenta');
     if (formularioCuenta) {
         formularioCuenta.addEventListener('submit', function(e) {
@@ -204,7 +191,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    /* Enviar formulario de inicio de sesión */
     const formularioSesion = document.getElementById('formularioSesion');
     if (formularioSesion) {
         formularioSesion.addEventListener('submit', function(e) {
@@ -250,7 +236,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    /* Enviar formulario de reporte */
     const formularioReporte = document.getElementById('formularioReporte');
     if (formularioReporte) {
         formularioReporte.addEventListener('submit', function(e) {
@@ -312,7 +297,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    /* Enviar formulario de contacto */
     const formularioContacto = document.getElementById('formularioContacto');
     if (formularioContacto) {
         formularioContacto.addEventListener('submit', function(e) {
@@ -392,7 +376,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    /* Inicializar listeners para limpiar errores al focus */
     document.querySelectorAll('input, textarea, select').forEach(campo => {
         campo.addEventListener('focus', function() {
             this.classList.remove('error');
@@ -402,15 +385,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    /* Inicializar menú según sesión */
     actualizarMenu();
 });
 
 /* -------------------------
-   Código Impacto (sin animaciones)
-   ------------------------- */
+Código Impacto
+------------------------- */
 
-/* Modal de mapa (abrir/cerrar) */
 function abrirMapaImpacto() {
     const modal = document.getElementById('modalMapaImpacto');
     if (!modal) return;
@@ -427,7 +408,6 @@ function cerrarMapaImpacto() {
     document.body.style.overflow = '';
 }
 
-/* Cerrar modal al hacer click fuera del contenido */
 document.addEventListener('click', function (e) {
     const modal = document.getElementById('modalMapaImpacto');
     if (!modal || !modal.classList.contains('open')) return;
@@ -437,18 +417,31 @@ document.addEventListener('click', function (e) {
     }
 });
 
-/* Esc para cerrar modal y ventanas */
 document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') {
         cerrarMapaImpacto();
         cerrarVentana();
     }
-})();
+});
 
-/* Función para unirse a campaña */
 function unirseACampania(nombreCampania) {
     const confirmacion = confirm('¿Deseas unirte a la campaña "' + nombreCampania + '"?\n\nRecibirás más información por correo.');
     if (confirmacion) {
         alert('¡Excelente! Te has unido a "' + nombreCampania + '". Recibirás los detalles pronto.');
     }
+}
+
+function mostrarModalComandoVoz() {
+    const ventana = document.getElementById('ventanaComandoVoz');
+    if (ventana) ventana.classList.add('mostrar');
+}
+
+function cerrarModalComandoVoz() {
+    const ventana = document.getElementById('ventanaComandoVoz');
+    if (ventana) ventana.classList.remove('mostrar');
+}
+
+function activarComandoVoz() {
+    cerrarModalComandoVoz();
+    mostrarPagina('comando-voz');
 }
