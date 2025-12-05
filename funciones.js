@@ -417,31 +417,3 @@ document.addEventListener('click', function (e) {
     }
 });
 
-document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') {
-        cerrarMapaImpacto();
-        cerrarVentana();
-    }
-});
-
-function unirseACampania(nombreCampania) {
-    const confirmacion = confirm('¿Deseas unirte a la campaña "' + nombreCampania + '"?\n\nRecibirás más información por correo.');
-    if (confirmacion) {
-        alert('¡Excelente! Te has unido a "' + nombreCampania + '". Recibirás los detalles pronto.');
-    }
-}
-
-function mostrarModalComandoVoz() {
-    const ventana = document.getElementById('ventanaComandoVoz');
-    if (ventana) ventana.classList.add('mostrar');
-}
-
-function cerrarModalComandoVoz() {
-    const ventana = document.getElementById('ventanaComandoVoz');
-    if (ventana) ventana.classList.remove('mostrar');
-}
-
-function activarComandoVoz() {
-    cerrarModalComandoVoz();
-    mostrarPagina('comando-voz');
-}
