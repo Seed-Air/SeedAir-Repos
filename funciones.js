@@ -436,3 +436,12 @@ function mostrarModalComandoVoz() {
     if (ventana) ventana.classList.add('mostrar');
 }
 
+function cerrarModalComandoVoz() {
+    const ventana = document.getElementById('ventanaComandoVoz');
+    if (ventana) ventana.classList.remove('mostrar');
+}
+
+function activarComandoVoz() {
+    cerrarModalComandoVoz();
+    mostrarPagina('comando-voz');
+}
