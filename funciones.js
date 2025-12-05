@@ -1,4 +1,13 @@
+let sesionActiva = false;
 
+function actualizarMenu() {
+    const elementosProtegidos = document.querySelectorAll('.menu-protegido');
+    if (elementosProtegidos && elementosProtegidos.length > 0) {
+        elementosProtegidos.forEach(elemento => {
+            elemento.style.display = sesionActiva ? 'block' : 'none';
+        });
+    }
+}
 
 function alternarMenu() {
     const menuNav = document.getElementById('menuNav');
